@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyanulis.PingPong.Bus", "Pyanulis.PingPong.Bus\Pyanulis.PingPong.Bus.csproj", "{DBD0EF1F-6FEB-4401-B024-D4D48579495E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyanulis.PingPong.ConsoleApp", "Pyanulis.PingPong.ConsoleApp\Pyanulis.PingPong.ConsoleApp.csproj", "{CCFAC705-29F1-48C8-BF16-34EB92CBB251}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBD0EF1F-6FEB-4401-B024-D4D48579495E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD0EF1F-6FEB-4401-B024-D4D48579495E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD0EF1F-6FEB-4401-B024-D4D48579495E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD0EF1F-6FEB-4401-B024-D4D48579495E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFAC705-29F1-48C8-BF16-34EB92CBB251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFAC705-29F1-48C8-BF16-34EB92CBB251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFAC705-29F1-48C8-BF16-34EB92CBB251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFAC705-29F1-48C8-BF16-34EB92CBB251}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C21A57B-4CFB-4BF8-8AB1-B37679030E5A}
+	EndGlobalSection
+EndGlobal
