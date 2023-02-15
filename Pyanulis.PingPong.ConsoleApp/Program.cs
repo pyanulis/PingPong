@@ -1,5 +1,6 @@
 ﻿using EasyNetQ.Management.Client.Model;
 using Pyanulis.PingPong.Bus;
+using Pyanulis.PingPong.DbWatch;
 
 namespace Pyanulis.PingPong.ConsoleApp
 {
@@ -54,6 +55,24 @@ namespace Pyanulis.PingPong.ConsoleApp
                     ListExchangeQueues();
                     continue;
                 }
+
+                if (cmd.IsCommand("dbc"))
+                {
+                    CreateDbService(cmd.Params());
+                    continue;
+                }
+
+                if (cmd.IsCommand("db-wi-a"))
+                {
+                    AddDbWatchItem(cmd.Params());
+                    continue;
+                }
+
+                if (cmd.IsCommand("db-exec"))
+                {
+                    await ApplyDbWatch();
+                    continue;
+                }
             }
 
             Console.WriteLine("Closing.");
@@ -68,7 +87,7 @@ namespace Pyanulis.PingPong.ConsoleApp
         {
             if (args.Length < 2)
             {
-                Console.WriteLine("rabbit command parameters: <host:port> <user> <password>");
+                Console.WriteLine("rabbit/rc command parameters: <host:port> <user> <password-optional>");
                 return;
             }
 
@@ -128,6 +147,68 @@ namespace Pyanulis.PingPong.ConsoleApp
             foreach (Queue q in QueueRegistry.CurrentInstance.ExchangeQueues)
             {
                 Console.WriteLine(q.Name);
+            }
+        }
+
+        private static void CreateDbService(string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Console.WriteLine("dbc command parameters: <host> <user> <password-optional>.");
+                return;
+            }
+
+            string password = args.Length > 2 ? args[2] : "";
+
+            try
+            {
+                DbService.Create(args[0], args[1], password);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        private static void AddDbWatchItem(string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Console.WriteLine("db-wi-a command parameters: <database> <table>.");
+                return;
+            }
+
+            if (DbService.Instance == null)
+            {
+                Console.WriteLine("Use dbc command first.");
+                return;
+            }
+
+            try
+            {
+                DbService.Instance.AddWatchItem(args[0], args[1]);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        private static async Task ApplyDbWatch()
+        {
+            if (DbService.Instance == null)
+            {
+                Console.WriteLine("Use dbc command first.");
+                return;
+            }
+
+            try
+            {
+                await DbService.Instance.ApplyWatch();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
     }

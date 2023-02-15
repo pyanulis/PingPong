@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pyanulis.PingPong.Bus\Pyanulis.PingPong.Bus.csproj" />
+    <ProjectReference Include="..\Pyanulis.PingPong.DbWatch\Pyanulis.PingPong.DbWatch.csproj" />
   </ItemGroup>
 
 </Project>
